@@ -20,7 +20,7 @@ struct WeatherCell: View {
                 .frame(width: 50, height: 50)
             Text(list?.description ?? "")
             
-        }
+        }.padding(10)
     }
 }
 

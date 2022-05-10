@@ -33,6 +33,7 @@ struct MainView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             fiveDayWeather
+                                .padding(.top, 100)
                         }
                     }
                     
@@ -46,7 +47,10 @@ struct MainView: View {
         
         ForEach(0 ..< (viewModel.fiveDayData?.list.count)!) { num in
             GeometryReader { geometry in
-                WeatherCell(list: viewModel.fiveDayData?.list[num])     .scaleEffect(max(0.8,-abs(geometry.frame(in: .global).midX - self.halfScreenWidth) / self.halfScreenWidth * self.magnification + self.magnification))
+                WeatherCell(list: viewModel.fiveDayData?.list[num])
+                    .background(.white)
+                    .scaleEffect(max(0.8,-abs(geometry.frame(in: .global).midX - self.halfScreenWidth) / self.halfScreenWidth * self.magnification + self.magnification), anchor: .bottom)
+                    
                 
             }
             .frame(width: 100)
